@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reciclagem de Embalagens</title>
+    <!-- Inclui o CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+J13JmzmjVUE9XoC0sf70pqBhJgU6Q" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Reciclagem de Embalagens</h1>
+        <form>
+            <div class="form-group">
+                <label for="product-name">Nome do Produto</label>
+                <input type="text" class="form-control" id="product-name" placeholder="Digite o nome do produto">
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" id="info-btn">Obter Informações de Reciclagem</button>
+                <button type="button" class="btn btn-primary" id="story-btn">Obter História sobre a Importância da Reciclagem</button>
+            </div>
+        </form>
+        <div class="mt-3">
+            <h3>Informações de Reciclagem:</h3>
+            <p id="recycling-info"></p>
+        </div>
+        <div class="mt-3">
+            <h3>História sobre a Importância da Reciclagem:</h3>
+            <p id="recycling-story"></p>
+        </div>
+    </div>
+
+    <!-- Inclui o JavaScript do Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.3/dist/umd/popper-core.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+J13JmzmjVUE9XoC0sf70pqBhJgU6Q" crossorigin="anonymous"></script>
+
+    <script>
+        const API_KEY = '<sua-chave-de-api>';
+
+        const infoBtn = document.getElementById('info-btn');
+        infoBtn.addEventListener('click', async () => {
+            const productName = document.getElementById('product-name').value;
+            const recyclingInfo = await getRecyclingInfo(productName);
+            document.getElementById('recycling-info').innerText = recyclingInfo;
+        });
+
+        const storyBtn = document.getElementById('story-btn');
+        storyBtn.addEventListener('click', async () => {
+            const productName = document.getElementById('product-name').value;
+            const recyclingStory = await getRecyclingStory(productName);
+            document.getElementById('recycling-story').innerText = recyclingStory;
+        });
+
+        async function get
